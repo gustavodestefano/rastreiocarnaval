@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carnaval 2026 – Cadê meu Bloco?</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 1rem; }
+    header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+    h1 { font-size: clamp(1.2rem, 3vw, 1.6rem); margin: 0; }
+    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; margin-top: 1rem; }
+    fieldset { border: 1px solid #888; border-radius: .5rem; padding: .75rem; }
+    legend { padding: 0 .5rem; }
+    label { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .5rem; margin: .35rem 0; }
+    input, select, button { font: inherit; padding: .4rem .5rem; }
+    button { cursor: pointer; }
+    .row { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+    .status { margin-top: 1rem; }
+    .diagnostics { border: 1px dashed #888; border-radius: .5rem; padding: .75rem; margin-top: 1rem; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    table { width: 100%; border-collapse: collapse; margin-top: .5rem; }
+    th, td { border: 1px solid #888; padding: .4rem; text-align: left; }
+    tbody tr:nth-child(odd) { background: color-mix(in oklab, Canvas, CanvasText 6%); }
+    footer { margin-top: 2rem; font-size: .9rem; opacity: .8; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎭 Carnaval 2026 – Cadê meu Bloco?</h1>
+    <div class="row">
+      <label>Atualização:
+        <select id="refresh">
+          <option value="0">Desligado</option>
+          <option value="60000">1 min</option>
+          <option value="120000">2 min</option>
+          <option value="300000">5 min</option>
+        </select>
+      </label>
+      <button id="btnCarregar">Carregar</button>
+    </div>
+  </header>
+
+  <section class="controls">
+    <fieldset>
+      <legend>Filtro</legend>
+      <label>Evento:
+        <select id="evento">
+          <option value="todos">Todos</option>
+        </select>
+      </label>
+      <label>count:
+        <input type="number" id="count" min="1" max="5000" value="100"/>
+      </label>
+      <label>from:
+        <input type="number" id="from" min="0" value="0"/>
+      </label>
+      <button id="btnAplicar">Aplicar filtro</button>
+    </fieldset>
+  </section>
+
+  <section class="status">
+    <div>Pronto</div>
+    <div>Última atualização: <span id="lastUpdate">—</span></div>
+  </section>
+
+  <section class="diagnostics">
+    <h2>Diagnóstico</h2>
+    <div>URL: <span id="diagUrl" class="mono">—</span></div>
+    <div>HTTP: <span id="diagHttp">—</span></div>
+    <div>Tipo: <span id="diagType">—</span></div>
+    <div>Items detectados: <span id="diagCount">—</span></div>
+    <details>
+      <summary>Amostra</summary>
+      <pre id="diagSample" class="mono">—</pre>
+    </details>
+  </section>
+
+  <section>
+    <h2>Resultados</h2>
+    <table id="tbl">
+      <thead><tr><th>#</th><th>Dados</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>Observação: esta versão é 100% cliente (HTML + JavaScript). Para funcionar, a API precisa vir do seu Worker no Cloudflare. Edite <code>API_URL</code> em <code>app.js</code>.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
