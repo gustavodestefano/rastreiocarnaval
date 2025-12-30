@@ -14,7 +14,7 @@ async function carregar() {
   $('status').textContent = 'Carregando…';
   layer.clearLayers();
   const from = Number($('from').value) || 0;
-  const count = Number($('count').value) || 100;
+  const count = Number($('count').value) || 1000;
   const url = new URL(API_URL);
   url.searchParams.set('from', String(from));
   url.searchParams.set('count', String(count));
