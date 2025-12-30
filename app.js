@@ -1,5 +1,5 @@
 // Frontend mínimo (Leaflet + fetch no Worker)
-const API_URL = 'https://meu-proxy-cors.rastreiocarnaval.workers.dev/'; // seu Worker
+const API_URL = 'https://47lwzq8u74.execute-api.sa-east-1.amazonaws.com/1/'; // seu Worker
 
 // Mapa base centrado em Campinas
 const map = L.map('map').setView([-22.90, -47.06], 12);
