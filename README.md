@@ -1,20 +1,19 @@
-# Frontend estático (HTML + JS)
+# Frontend estático (GitHub Pages)
 
-Este pacote contém uma página estática que consome sua API via **Cloudflare Worker** (proxy com CORS).
+Publicar em: https://gustavodestefano.github.io/rastreiocarnaval/
 
-## Passos
-1. **Edite `app.js`** e substitua `API_URL` pela URL do seu Worker (ex.: `https://cloudflare-worker-proxy.<subdominio>.workers.dev`).
-2. Publique como site estático:
+1) Suba `index.html` e `app.js` no repositório `rastreiocarnaval`.
+2) Ative GitHub Pages (branch `main`, pasta raiz).
+3) A página usa Leaflet via CDN e consome o Worker:
+   `https://meu-proxy-cors.rastreiocarnaval.workers.dev/?from=0&count=100`
 
-### Opção A: GitHub Pages
-- Crie um repositório e faça upload de `index.html` e `app.js`.
-- Nas configurações do repositório, ative **Pages** (branch `main`, pasta raiz).
-- Acesse a URL pública e teste.
+A estrutura do JSON esperada por item é:
+{
+  "id": 1,
+  "ds_evento": "av123",
+  "dt_registro": "2025-12-18T15:00:00.000+00:00",
+  "ds_posicao": { "latitude": -22.88, "longitude": -47.06, "zoom": "18" },
+  "pk_uk_registro": 1
+}
 
-### Opção B: Netlify (arrastar-e-soltar)
-- Acesse https://app.netlify.com/ e crie conta.
-- Clique em **Add new site → Deploy manually** e arraste a pasta com os dois arquivos.
-- Teste a URL pública gerada.
-
-### Dica
-No DevTools (F12 → Network), confirme que a chamada ao Worker está retornando **200** e o cabeçalho `Access-Control-Allow-Origin`.
+Os pontos são plotados por `latitude` e `longitude`.
