@@ -5,7 +5,7 @@ Publicar em: https://gustavodestefano.github.io/rastreiocarnaval/
 1) Suba `index.html` e `app.js` no repositório `rastreiocarnaval`.
 2) Ative GitHub Pages (branch `main`, pasta raiz).
 3) A página usa Leaflet via CDN e consome o Worker:
-   `https://meu-proxy-cors.rastreiocarnaval.workers.dev/?from=0&count=100`
+   `https://47lwzq8u74.execute-api.sa-east-1.amazonaws.com/1/?from=0&count=100`
 
 A estrutura do JSON esperada por item é:
 {
